@@ -20,11 +20,11 @@ PRODUCT_RELEASE_NAME := davinci
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/twrp/config/common.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := davinci
-PRODUCT_NAME := omni_davinci
+PRODUCT_NAME := twrp_davinci
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Xiaomi Mi 9T
 PRODUCT_MANUFACTURER := Xiaomi
@@ -40,3 +40,9 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.build.security_patch=2099-12-31
 
+PRODUCT_PACKAGES += \
+    qcom_decrypt \
+    qcom_decrypt_fbe
+
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/commonsys-intf/display
